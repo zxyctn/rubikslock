@@ -42,20 +42,20 @@ def anticlockwise(cube, f, t, d, l, r):
 def f(cube, is_clockwise=True):
     if (is_clockwise):
         return clockwise(
-                turned.copy(), 
-                turned['f'].copy(), 
-                turned['t'].copy(), 
-                turned['d'].copy(), 
-                turned['l'].copy(), 
-                turned['r'].copy()
+                cube.copy(), 
+                cube['f'].copy(), 
+                cube['t'].copy(), 
+                cube['d'].copy(), 
+                cube['l'].copy(), 
+                cube['r'].copy()
             )
     return anticlockwise(
-        turned.copy(), 
-        turned['f'].copy(), 
-        turned['t'].copy(), 
-        turned['d'].copy(), 
-        turned['l'].copy(), 
-        turned['r'].copy()
+        cube.copy(), 
+        cube['f'].copy(), 
+        cube['t'].copy(), 
+        cube['d'].copy(), 
+        cube['l'].copy(), 
+        cube['r'].copy()
     )
 
 def r(cube, is_clockwise=True):
@@ -206,7 +206,7 @@ def t(cube, is_clockwise=True):
         'l': np.rot90(returned['l'].copy(), 1),
         'r': np.rot90(returned['r'].copy(), -1),
         'b': np.rot90(returned['t'].copy(), 2),
-        't': returned['t'].copy(),
+        't': returned['f'].copy(),
         'd': np.rot90(returned['b'].copy(), -2),
     }
 
