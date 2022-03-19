@@ -5,6 +5,7 @@ def get_components(img):
     img_hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
 
     no_black_low = np.array([0, 0, 144])
+    no_black_low = np.array([0, 0, 132])
     no_black_up = np.array([180, 255, 255])
     no_black_mask = cv2.inRange(img_hsv, no_black_low, no_black_up)
     no_black = cv2.bitwise_and(img, img, mask=no_black_mask)
@@ -78,10 +79,10 @@ def get_masks_hsv(img):
     white_opening = cv2.morphologyEx(white_mask, cv2.MORPH_OPEN, kernel)
     orange_opening = cv2.morphologyEx(orange_mask, cv2.MORPH_OPEN, kernel)
 
-    cv2.imshow("Red", red_mask)
+    # cv2.imshow("Red", red_mask)
 
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
+    # cv2.waitKey(0)
+    # cv2.destroyAllWindows()
 
     return [
         yellow_opening,
@@ -96,22 +97,30 @@ def get_masks_rgb(img):
     img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 
     white_low = np.array([172, 159, 141])
+    white_low = np.array([160, 150, 141])
+    white_up = np.array([223, 211, 212])
     white_up = np.array([223, 211, 212])
     white_mask = cv2.inRange(img_rgb, white_low, white_up)
     white = cv2.bitwise_and(img_rgb, img, mask=white_mask)
 
     yellow_low = np.array([201, 140, 0])
+    yellow_low = np.array([156, 140, 0])
     yellow_up = np.array([255, 255, 87])
+    yellow_up = np.array([255, 255, 110])
     yellow_mask = cv2.inRange(img_rgb, yellow_low, yellow_up)
     yellow = cv2.bitwise_and(img_rgb, img, mask=yellow_mask)
 
     orange_low = np.array([220, 71, 2])
+    orange_low = np.array([190, 71, 2])
     orange_up = np.array([255, 150, 40])
+    orange_up = np.array([255, 150, 75])
     orange_mask = cv2.inRange(img_rgb, orange_low, orange_up)
     orange = cv2.bitwise_and(img_rgb, img, mask=orange_mask)
 
     red_low_1 = np.array([167, 0, 0])
+    red_low_1 = np.array([140, 0, 0])
     red_up_1 = np.array([242, 85, 56])
+    red_up_1 = np.array([242, 55, 45])
     red_mask_1 = cv2.inRange(img_rgb, red_low_1, red_up_1)
 
     # red_low_2 = np.array([190, 0, 0])
@@ -131,7 +140,9 @@ def get_masks_rgb(img):
     blue = cv2.bitwise_and(img_rgb, img, mask=blue_mask)
 
     green_low = np.array([0, 175, 0])
+    green_low = np.array([0, 130, 0])
     green_up = np.array([88, 255, 255])
+    green_up = np.array([60, 255, 255])
     green_mask = cv2.inRange(img_rgb, green_low, green_up)
     green = cv2.bitwise_and(img_rgb, img, mask=green_mask)
 
@@ -201,9 +212,9 @@ def get_mapped_face(img, cells):
         elif white_opening[cell.cY][cell.cX]:
             cube.append('w')
         
-        image = cv2.circle(img, (cell.cX, cell.cY), radius=10, color = (0, 0, 255), thickness=-1)
-        cv2.imshow("Red Opening", image)
-        cv2.waitKey(0)
+        # image = cv2.circle(img, (cell.cX, cell.cY), radius=10, color = (0, 0, 255), thickness=-1)
+        # cv2.imshow("Red Opening", image)
+        # cv2.waitKey(0)
     
     return cube
 

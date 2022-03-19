@@ -5,14 +5,14 @@ def nothing(x):
     pass
 
 # Load image
-image = cv2.imread('imgs/1.jpg')
-image2 = cv2.imread('imgs/2.jpg')
-image3 = cv2.imread('imgs/3.jpg')
-image4 = cv2.imread('imgs/4.jpg')
-image5 = cv2.imread('imgs/5.jpg')
-image6 = cv2.imread('imgs/6.jpg')
+image = cv2.imread('../rubikslockweb/media/solved_f.jpeg')
+image2 = cv2.imread('../rubikslockweb/media/solved_r.jpeg')
+image3 = cv2.imread('../rubikslockweb/media/solved_b.jpeg')
+image4 = cv2.imread('../rubikslockweb/media/solved_l.jpeg')
+image5 = cv2.imread('../rubikslockweb/media/solved_t.jpeg')
+image6 = cv2.imread('../rubikslockweb/media/solved_d.jpeg')
 
-scale_percent = 10# percent of original size
+scale_percent = 12# percent of original size
 width = int(image.shape[1] * scale_percent / 100)
 height = int(image.shape[0] * scale_percent / 100)
 dim = (width, height)
@@ -60,27 +60,27 @@ while(1):
     upper = np.array([rMax, gMax, bMax])
 
     # Convert to HSV format and color threshold
-    rgb1 = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
+    rgb1 = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
     mask1 = cv2.inRange(rgb1, lower, upper)
     result1 = cv2.bitwise_and(image, image, mask=mask1)
 
-    rgb2 = cv2.cvtColor(image2, cv2.COLOR_BGR2HSV)
+    rgb2 = cv2.cvtColor(image2, cv2.COLOR_BGR2RGB)
     mask2 = cv2.inRange(rgb2, lower, upper)
     result2 = cv2.bitwise_and(image2, image2, mask=mask2)
 
-    rgb3 = cv2.cvtColor(image3, cv2.COLOR_BGR2HSV)
+    rgb3 = cv2.cvtColor(image3, cv2.COLOR_BGR2RGB)
     mask3 = cv2.inRange(rgb3, lower, upper)
     result3 = cv2.bitwise_and(image3, image3, mask=mask3)
 
-    rgb4 = cv2.cvtColor(image4, cv2.COLOR_BGR2HSV)
+    rgb4 = cv2.cvtColor(image4, cv2.COLOR_BGR2RGB)
     mask4 = cv2.inRange(rgb4, lower, upper)
     result4 = cv2.bitwise_and(image4, image4, mask=mask4)
 
-    rgb5 = cv2.cvtColor(image5, cv2.COLOR_BGR2HSV)
+    rgb5 = cv2.cvtColor(image5, cv2.COLOR_BGR2RGB)
     mask5 = cv2.inRange(rgb5, lower, upper)
     result5 = cv2.bitwise_and(image5, image5, mask=mask5)
 
-    rgb6 = cv2.cvtColor(image6, cv2.COLOR_BGR2HSV)
+    rgb6 = cv2.cvtColor(image6, cv2.COLOR_BGR2RGB)
     mask6 = cv2.inRange(rgb6, lower, upper)
     result6 = cv2.bitwise_and(image6, image6, mask=mask6)
 

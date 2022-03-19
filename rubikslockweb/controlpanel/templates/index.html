@@ -10,12 +10,18 @@
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
 
+    <style>
+        .grayborder {
+            border: 1px rgb(200, 200, 200) solid
+        }
+    </style>
+
     <title>Rubik's Lock</title>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
-        <div class="container p-0">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm grayborder">
+        <div class="container">
             <a class="navbar-brand" style="color: #C10A8A" href="#"><strong>rubik's lock</strong></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -24,18 +30,91 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Login</a>
+                        <a class="nav-link" href="/new">New password</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
-    <div class="container shadow bg-light m-auto mt-5 p-5 rounded">
-        <div class="rounded-3">
-            <h1>Hello, world</h1>
+    <div class="container shadow bg-light m-auto mt-5 p-5 rounded-3 mb-5 grayborder">
+        <form method="post" action="/upload" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="">
+                <h1>Reference cube</h1>
+                <p class="lead">Please upload each face below</p>
+
+                <div class="row align-items-center">
+                    <label class="form-label col-4 col-sm-3 col-md-2" for="reference_f">Front face</label>
+                    <input type="file" class="form-control mb-2 col" name="reference_f" id="reference_f" accept="image/*" />
+                </div>
+                
+                <div class="row align-items-center">
+                    <label class="form-label col-4 col-sm-3 col-md-2" for="reference_r">Right face</label>
+                    <input type="file" class="form-control mb-2 col" name="reference_r" id="reference_r" accept="image/*" />
+                </div>
+
+                <div class="row align-items-center">
+                    <label class="form-label col-4 col-sm-3 col-md-2" for="reference_b">Back face</label>
+                    <input type="file" class="form-control mb-2 col" name="reference_b" id="reference_b" accept="image/*" />
+                </div>
+
+                <div class="row align-items-center">
+                    <label class="form-label col-4 col-sm-3 col-md-2" for="reference_l">Left face</label>
+                    <input type="file" class="form-control mb-2 col" name="reference_l" id="reference_l" accept="image/*" />
+                </div>
+
+                <div class="row align-items-center">
+                    <label class="form-label col-4 col-sm-3 col-md-2" for="reference_t">Top face</label>
+                    <input type="file" class="form-control mb-2 col" name="reference_t" id="reference_t" accept="image/*" />
+                </div>
+
+                <div class="row align-items-center">
+                    <label class="form-label col-4 col-sm-3 col-md-2" for="reference_d">Down face</label>
+                    <input type="file" class="form-control mb-2 col" name="reference_d" id="reference_d" accept="image/*" />
+                </div>
+
+            </div>
             <hr>
-            <p class="lead">Hello, welcome to your future webpage.</p>
-        </div>
+            <div class="">
+                <h1>Solved cube</h1>
+                <p class="lead">Please upload each face below</p>
+
+                <div class="row align-items-center">
+                    <label class="form-label col-4 col-sm-3 col-md-2" for="solved_f">Front face</label>
+                    <input type="file" class="form-control mb-2 col" name="solved_f" id="solved_f" accept="image/*" />
+                </div>
+                
+                <div class="row align-items-center">
+                    <label class="form-label col-4 col-sm-3 col-md-2" for="solved_r">Right face</label>
+                    <input type="file" class="form-control mb-2 col" name="solved_r" id="solved_r" accept="image/*" />
+                </div>
+
+                <div class="row align-items-center">
+                    <label class="form-label col-4 col-sm-3 col-md-2" for="solved_b">Back face</label>
+                    <input type="file" class="form-control mb-2 col" name="solved_b" id="solved_b" accept="image/*" />
+                </div>
+
+                <div class="row align-items-center">
+                    <label class="form-label col-4 col-sm-3 col-md-2" for="solved_l">Left face</label>
+                    <input type="file" class="form-control mb-2 col" name="solved_l" id="solved_l" accept="image/*" />
+                </div>
+
+                <div class="row align-items-center">
+                    <label class="form-label col-4 col-sm-3 col-md-2" for="solved_t">Top face</label>
+                    <input type="file" class="form-control mb-2 col" name="solved_t" id="solved_t" accept="image/*" />
+                </div>
+
+                <div class="row align-items-center">
+                    <label class="form-label col-4 col-sm-3 col-md-2" for="solved_d">Down face</label>
+                    <input type="file" class="form-control mb-2 col" name="solved_d" id="solved_d" accept="image/*" />
+                </div>
+                
+            </div>
+            
+            <div class="d-flex justify-content-center mt-5">
+                <button type="submit" class="btn btn-primary col-12 col-sm-8 col-md-6 col-lg-4 col-xl-2">Submit</button>
+            </div>
+        </form>
     </div>
 </body>
 
