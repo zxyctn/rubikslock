@@ -1,6 +1,6 @@
 import cv2
 
-from .color_ranges import get_components, get_mapped_face
+from controlpanel.color_ranges import get_components, get_mapped_face
 
 class cell:
     def __init__(self):

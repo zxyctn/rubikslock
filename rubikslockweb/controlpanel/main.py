@@ -70,6 +70,20 @@ def compare_solutions(solution, solved_cube):
             return False
     return True
 
+# image = cv2.imread('../media/solved_f.jpeg')
+# image2 = cv2.imread('../media/solved_r.jpeg')
+# image3 = cv2.imread('../media/solved_b.jpeg')
+# image4 = cv2.imread('../media/solved_l.jpeg')
+# image5 = cv2.imread('../media/solved_t.jpeg')
+# image6 = cv2.imread('../media/solved_d.jpeg')
+
+# image7 = cv2.imread('../media/reference_f.jpeg')
+# image8 = cv2.imread('../media/reference_r.jpeg')
+# image9 = cv2.imread('../media/reference_b.jpeg')
+# image10 = cv2.imread('../media/reference_l.jpeg')
+# image11 = cv2.imread('../media/reference_t.jpeg')
+# image12 = cv2.imread('../media/reference_d.jpeg')
+
 # img_f = cv2.imread("../../rubikslock/imgs/1.jpg")
 # img_r = cv2.imread("../../rubikslock/imgs/2.jpg")
 # img_b = cv2.imread("../../rubikslock/imgs/3.jpg")
@@ -78,12 +92,15 @@ def compare_solutions(solution, solved_cube):
 # img_d = cv2.imread("../../rubikslock/imgs/6.jpg")
 
 
-# cube['f'] = np.reshape(get_face(img_f), (3,3))
-# cube['r'] = np.reshape(get_face(img_r), (3,3))
-# cube['b'] = np.reshape(get_face(img_b), (3,3))
-# cube['l'] = np.reshape(get_face(img_l), (3,3))
-# cube['t'] = np.reshape(get_face(img_t), (3,3))
-# cube['d'] = np.reshape(get_face(img_d), (3,3))
+# cube = get_cube(
+#     '../media/solved_f.jpeg',
+#     '../media/solved_r.jpeg',
+#     '../media/solved_b.jpeg',
+#     '../media/solved_l.jpeg',
+#     '../media/solved_t.jpeg',
+#     '../media/solved_d.jpeg',
+#     )
+
 
 # print(cube)
 
