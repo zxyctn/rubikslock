@@ -16,26 +16,6 @@
         }
     </style>
 
-    <script>
-        function setPassword() {
-            let data = {
-                old: document.getElementById("old").value,
-                new: document.getElementById("new").value,
-            };
-
-            fetch("/set", {
-                method: "POST",
-                headers: {'Content-Type': 'application/json'}, 
-                body: JSON.stringify(data)
-            }).then(res => {
-                if (res.status == 200)
-                    alert("Password successfully changed!");
-                else 
-                    alert("Entered password was wrong.");
-            });
-        }
-    </script>
-
     <title>Rubik's Lock</title>
 </head>
 
@@ -57,24 +37,11 @@
         </div>
     </nav>
     <div class="container shadow bg-light m-auto mt-5 p-5 rounded-3 mb-5 grayborder">
-        <h2>Set new password</h2>
-        <hr>
-        <div class="row align-items-center mb-2">
-            <label for="old" class="col-2">Old password</label>
-            <input type="text" class="form-control col" name="old" id="old">
-        </div>
-        <div class="row align-items-center">
-            <label for="new" class="col-2">New password</label>
-            <input type="text" class="form-control col" name="new" id="new">
-        </div>
+        <h1 class="display-4 text-center text-danger"><strong>Access Denied</strong></h1>
         <div class="d-flex justify-content-center mt-5">
-            <button class="btn btn-primary col-12 col-sm-6 col-md-4 col-lg-3" id="submit">Submit</button>
+            <button class="btn btn-danger col-md-2 col-4" onclick="location.href='/'">Go back</button>
         </div>
     </div>
-
-    <script>
-        document.getElementById("submit").addEventListener("click", setPassword);
-    </script>
 </body>
 
 </html>

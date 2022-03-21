@@ -2,7 +2,7 @@ import json
 from pathlib import Path
 
 from django.shortcuts import render
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from django.core.files.storage import FileSystemStorage
 from django.views.decorators.csrf import csrf_exempt
 
@@ -124,10 +124,16 @@ def upload(request):
         fss.delete(base_path + file_solved_t_url)
         fss.delete(base_path + file_solved_d_url)
 
-        return JsonResponse(is_same, safe=False)
+        return render(
+            request,
+            "access_granted.html"
+            if is_same
+            else
+            "access_denied.html"
+        )
 
 def new(request):
-    return render(request, "new.html")
+    return render(request, "access_granted.html")
 
 @csrf_exempt
 def set_password(request):
@@ -137,13 +143,18 @@ def set_password(request):
     data["new"] = data["new"].upper()
 
     password = get_password()
+    print(password)
+    print(data["old"])
+
+    base_path = str(Path(__file__).resolve().parent.parent)
+    base_path = base_path.replace("\\", "/")
 
     if (password == data["old"]):
         f = open(base_path + '/controlpanel/pass.txt', "w")
         f.write(data["new"])
         f.close()
-
-    return JsonReponse(data["old"] == password, safe=False)
+    print ("Password changed" if data["old"] == password else "Entered password is wrong")
+    return HttpResponse(status=200 if data["old"] == password else 404)
 
 def get_password():
     password = ""
