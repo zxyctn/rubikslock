@@ -7,6 +7,7 @@ from django.core.files.storage import FileSystemStorage
 from django.views.decorators.csrf import csrf_exempt
 
 from controlpanel.main import get_cube, solve_cube, compare_solutions
+from controlpanel.arduino import lock, unlock
 
 def index(request):
     return render(request, "index.html")
@@ -110,19 +111,19 @@ def upload(request):
         print(solved_cube)
         print("=====================================================================")
 
-        fss.delete(base_path + file_reference_f_url)
-        fss.delete(base_path + file_reference_r_url)
-        fss.delete(base_path + file_reference_b_url)
-        fss.delete(base_path + file_reference_l_url)
-        fss.delete(base_path + file_reference_t_url)
-        fss.delete(base_path + file_reference_d_url)
+        # fss.delete(base_path + file_reference_f_url)
+        # fss.delete(base_path + file_reference_r_url)
+        # fss.delete(base_path + file_reference_b_url)
+        # fss.delete(base_path + file_reference_l_url)
+        # fss.delete(base_path + file_reference_t_url)
+        # fss.delete(base_path + file_reference_d_url)
 
-        fss.delete(base_path + file_solved_f_url)
-        fss.delete(base_path + file_solved_r_url)
-        fss.delete(base_path + file_solved_b_url)
-        fss.delete(base_path + file_solved_l_url)
-        fss.delete(base_path + file_solved_t_url)
-        fss.delete(base_path + file_solved_d_url)
+        # fss.delete(base_path + file_solved_f_url)
+        # fss.delete(base_path + file_solved_r_url)
+        # fss.delete(base_path + file_solved_b_url)
+        # fss.delete(base_path + file_solved_l_url)
+        # fss.delete(base_path + file_solved_t_url)
+        # fss.delete(base_path + file_solved_d_url)
 
         return render(
             request,
@@ -166,3 +167,11 @@ def get_password():
         password = f.readlines()
     
     return password[0]
+
+def call_lock(request):
+    lock()
+    return JsonResponse("OK", safe=False)
+
+def call_unlock(request):
+    unlock()
+    return JsonResponse("OK", safe=False)

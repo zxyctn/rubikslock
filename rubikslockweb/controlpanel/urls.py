@@ -8,4 +8,6 @@ urlpatterns = [
     path('upload', views.upload, name="upload"),
     path('new', views.new, name="new"),
     path('set', views.set_password, name="set"),
+    path('lock', views.call_lock, name="lock"),
+    path('unlock', views.call_unlock, name="unlock"),
 ]

@@ -8,7 +8,7 @@ def no_black(img):
     img_hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
 
     no_black_low = np.array([0, 0, 144])
-    no_black_low = np.array([0, 20, 170])
+    no_black_low = np.array([0, 0, 170])
     no_black_up = np.array([179, 255, 255])
     no_black_mask = cv2.inRange(img_hsv, no_black_low, no_black_up)
     no_black = cv2.bitwise_and(img, img, mask=no_black_mask)
@@ -39,7 +39,7 @@ image10 = cv2.imread('../rubikslockweb/media/reference_l.jpeg')
 image11 = cv2.imread('../rubikslockweb/media/reference_t.jpeg')
 image12 = cv2.imread('../rubikslockweb/media/reference_d.jpeg')
 
-scale_percent = 12# percent of original size
+scale_percent = 5# percent of original size
 width = int(image.shape[1] * scale_percent / 100)
 height = int(image.shape[0] * scale_percent / 100)
 dim = (width, height)

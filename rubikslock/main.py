@@ -51,3 +51,12 @@ def get_cube(f, r, b, l, t, d):
 #     print(key + ": ")
 #     for i in range(3):
 #         print(cube[key][i*3] + " " + cube[key][i*3+1] + " " + cube[key][i*3+2])
+
+cube = get_cube(
+    '../rubikslockweb/media/solved_f.jpeg',
+    '../rubikslockweb/media/solved_r.jpeg',
+    '../rubikslockweb/media/solved_b.jpeg',
+    '../rubikslockweb/media/solved_l.jpeg',
+    '../rubikslockweb/media/solved_t.jpeg',
+    '../rubikslockweb/media/solved_d.jpeg',
+    )

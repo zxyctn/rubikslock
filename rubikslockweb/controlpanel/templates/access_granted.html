@@ -17,18 +17,19 @@
     </style>
 
     <script>
-        function setPassword() {
-            let data = {
-                old: document.getElementById("old").value,
-                new: document.getElementById("new").value,
-            };
-
-            fetch("/set", {
-                method: "POST",
-                headers: {'Content-Type': 'application/json'}, 
-                body: JSON.stringify(data)
+        function lock() {
+            fetch("/lock", {
+                method: "GET",
             }).then(res => {
-                alert("Request complete! response:", res);
+                console.log("Request complete! response:", res);
+            });
+        }
+
+        function unlock() {
+            fetch("/unlock", {
+                method: "GET",
+            }).then(res => {
+                console.log("Request complete! response:", res);
             });
         }
     </script>
@@ -56,14 +57,15 @@
     <div class="container shadow bg-light m-auto mt-5 p-5 rounded-3 mb-5 grayborder">
         <h1 class="display-4 text-center text-success"><strong>Access Granted</strong></h1>
         <div class="d-flex justify-content-center mt-5">
-            <button class="btn btn-danger col-md-2 col-4">Lock</button>
+            <button class="btn btn-danger col-md-2 col-4" id="lock">Lock</button>
             <div class="col-1"></div>
-            <button class="btn btn-success col-md-2 col-4">Unlock</button>
+            <button class="btn btn-success col-md-2 col-4" id="unlock">Unlock</button>
         </div>
     </div>
 
     <script>
-        document.getElementById("submit").addEventListener("click", setPassword);
+        document.getElementById("lock").addEventListener("click", lock);
+        document.getElementById("unlock").addEventListener("click", unlock);
     </script>
 </body>
 
